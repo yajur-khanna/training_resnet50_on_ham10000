@@ -32,10 +32,4 @@ The pipeline covers the complete workflow:
 
 ### Model Overview
 
-```mermaid
-graph TD
-    A[Input Image] --> B[Conv + BN + ReLU]
-    B --> C[Residual Bottleneck Blocks]
-    C --> D[Global Average Pooling]
-    D --> E[Fully Connected Layer]
-    E --> F[Class Probabilities]
+![ResNet-50 Architecture Overview](./ResNet50.png)
