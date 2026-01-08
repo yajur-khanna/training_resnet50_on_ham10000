@@ -108,3 +108,33 @@ Model performance is evaluated using:
 These metrics help diagnose optimization issues and generalization behavior.
 
 ---
+
+---
+
+## Results
+
+### Training vs Validation Accuracy
+
+![Training vs Validation Accuracy](./images/train_vs_val_accuracy_resnet_skincancer.png)
+
+Training accuracy increases steadily across epochs, indicating effective feature learning and stable optimization.  
+Validation accuracy improves early and then plateaus, suggesting that most generalizable patterns are learned within the initial training phase.
+
+---
+
+### Training vs Validation Loss
+
+![Training vs Validation Loss](./images/train_vs_val_loss_resnet_skincancer.png)
+
+Training loss decreases consistently, confirming successful minimization of the objective function.  
+Validation loss initially decreases but later trends upward, indicating the onset of overfitting as model capacity begins to exceed generalization constraints.
+
+---
+
+### Interpretation
+
+- The growing gap between training and validation metrics reflects **overfitting**, a common behavior in deep CNNs such as ResNet-50.
+- Early stabilization of validation accuracy suggests diminishing returns from continued training beyond mid-epochs.
+- These results motivate the use of **early stopping, stronger regularization, or increased data augmentation** to improve generalization.
+
+Overall, the model demonstrates effective optimization and representation learning, but tends to overfit.
