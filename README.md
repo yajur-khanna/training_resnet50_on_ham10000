@@ -33,3 +33,78 @@ The pipeline covers the complete workflow:
 ### Model Overview
 
 ![ResNet-50 Architecture Overview](./ResNet50.png)
+
+---
+
+## Model Architecture Summary
+
+The model is based on the **ResNet-50** architecture, which uses deep residual learning to enable stable optimization of very deep convolutional networks.
+
+| Component | Description |
+|---------|-------------|
+| Backbone | ResNet-50 |
+| Block Type | Bottleneck residual blocks |
+| Convolutions | 1×1 → 3×3 → 1×1 |
+| Skip Connections | Identity / projection shortcuts |
+| Normalization | Batch Normalization |
+| Activation | ReLU |
+| Pooling | Global Average Pooling |
+| Output Layer | Fully Connected classification head |
+
+Residual connections allow the network to learn **residual mappings** instead of direct mappings, significantly reducing degradation and vanishing gradient issues as depth increases.
+
+---
+
+## Dataset Preparation
+
+### ETL Pipeline
+
+The project follows a structured **ETL (Extract, Transform, Load)** pipeline to ensure reproducibility and clean experimentation.
+
+### Extract
+- Load image data from disk using PyTorch `Dataset` and `DataLoader`
+- Support for custom directory-based datasets
+
+### Transform
+- Resize images to model-compatible resolution
+- Normalize using ImageNet mean and standard deviation
+- Optional data augmentation for improved generalization
+
+### Load
+- Construct batched DataLoaders for training and validation
+- Shuffling enabled for training, disabled for evaluation
+
+This separation allows easy substitution of datasets without modifying model logic.
+
+---
+
+## Model Training
+
+### Loss Function -
+- Cross-Entropy Loss for multi-class classification
+
+### Optimization -
+- Optimizer: Adam / SGD (configurable)
+- Optional learning rate scheduling
+
+### Training Configuration -
+
+- Batch size: Configurable
+- Epochs: Configurable
+- Device: CPU / GPU (CUDA supported)
+
+Training and validation metrics are tracked per epoch to monitor convergence and detect overfitting.
+
+---
+
+## Evaluation
+
+Model performance is evaluated using:
+
+- Classification accuracy
+- Training vs validation loss trends
+- Epoch-wise performance analysis
+
+These metrics help diagnose optimization issues and generalization behavior.
+
+---
