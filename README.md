@@ -109,8 +109,6 @@ These metrics help diagnose optimization issues and generalization behavior.
 
 ---
 
----
-
 ## Results
 
 ### Training vs Validation Accuracy
